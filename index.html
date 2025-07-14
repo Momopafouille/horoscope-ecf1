@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Découvrez votre horoscope quotidien personnalisé pour les 12 signes du zodiaque. Messages spirituels et conseils astrologiques par Mohamed Moussaoui.">
+    <meta name="keywords" content="horoscope, astrologie, zodiaque, signes astrologiques, prédictions, spiritualité, Mohamed Moussaoui">
+    <meta name="author" content="Mohamed Moussaoui">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Horoscope Personnalisé - Messages Célestes par Mohamed Moussaoui">
+    <meta property="og:description" content="Découvrez votre horoscope quotidien pour les 12 signes du zodiaque avec des conseils spirituels personnalisés.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ecf1-moussaoui-mohamed.sidathsoeun.fr">
+    <meta property="og:image" content="https://ecf1-moussaoui-mohamed.sidathsoeun.fr/assets/images/horoscope.webp">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://ecf1-moussaoui-mohamed.sidathsoeun.fr">
+    
+    <title>Site Horoscope - Découvrez votre message céleste pour aujourd'hui</title>
+    
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" href="assets/images/horoscope.webp" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <!-- Schema.org markup for Google -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Horoscope par Mohamed Moussaoui",
+      "url": "https://ecf1-moussaoui-mohamed.sidathsoeun.fr",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://ecf1-moussaoui-mohamed.sidathsoeun.fr/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+</head>
+<body itemscope itemtype="https://schema.org/WebPage">
+    <div class="app-container">
+        <header class="app-header" role="banner" itemscope itemtype="https://schema.org/WPHeader">
+            <h1 itemprop="headline">Horoscope Quotidien</h1>
+            <p itemprop="description">Découvrez votre message céleste personnalisé pour aujourd'hui</p>
+        </header>
+
+        <div class="astrology-image-container">
+            <img src="assets/images/horoscope.webp" alt="Image Horoscope .webp Signes du zodiac crée par Mohamed Moussaoui" class="astrology-image">
+        </div>
+
+        <main class="app-main" role="main">
+            <section class="action-section" aria-label="Obtenir les prédictions">
+                <button id="fetchHoroscope" class="cta-button">
+                    <span>Tirer les 12 messages astrologiques</span>
+                    <svg viewBox="0 0 24 24" class="button-icon" aria-hidden="true">
+                        <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M12,10.5A1.5,1.5 0 0,0 10.5,12A1.5,1.5 0 0,0 12,13.5A1.5,1.5 0 0,0 13.5,12A1.5,1.5 0 0,0 12,10.5M7.5,10.5A1.5,1.5 0 0,0 6,12A1.5,1.5 0 0,0 7.5,13.5A1.5,1.5 0 0,0 9,12A1.5,1.5 0 0,0 7.5,10.5M16.5,10.5A1.5,1.5 0 0,0 15,12A1.5,1.5 0 0,0 16.5,13.5A1.5,1.5 0 0,0 18,12A1.5,1.5 0 0,0 16.5,10.5Z" />
+                    </svg>
+                </button>
+            </section>
+
+            <div id="loader" class="loader-container hidden" aria-live="polite" aria-busy="true">
+                <div class="loader" role="status"></div>
+                <p>Connexion avec le cosmos en cours...</p>
+            </div>
+
+            <div id="errorContainer" class="error-container hidden" role="alert">
+                <svg viewBox="0 0 24 24" class="error-icon" aria-hidden="true">
+                    <path d="M12,2C17.53,2 22,6.47 22,12C22,17.53 17.53,22 12,22C6.47,22 2,17.53 2,12C2,6.47 6.47,2 12,2M15.59,7L12,10.59L8.41,7L7,8.41L10.59,12L7,15.59L8.41,17L12,13.41L15.59,17L17,15.59L13.41,12L17,8.41L15.59,7Z" />
+                </svg>
+                <p id="errorMessage"></p>
+                <button id="retryButton" class="retry-button">Réessayer</button>
+            </div>
+
+            <section id="horoscopeContainer" class="horoscope-grid" aria-label="Prédictions horoscopiques"></section>
+
+            <section class="astrology-info" itemscope itemtype="https://schema.org/Article">
+                <h2 itemprop="headline">Comprendre l'Astrologie</h2>
+                <div class="astrology-content" itemprop="articleBody">
+                    <p>L'astrologie est un ensemble de croyances et de pratiques qui repose sur l'analyse symbolique des relations supposées entre les mouvements des astres (notamment les planètes du système solaire) et les comportements ou événements humains, tant personnels que collectifs.</p>
+                    
+                    <p>Bien qu'elle soit largement répandue dans de nombreuses cultures, l'astrologie est classée comme une pseudoscience - une discipline qui emprunte à la science son apparence sans en respecter la rigueur méthodologique. Elle est aussi parfois perçue comme une forme de superstition.</p>
+                    
+                    <p>Par sa démarche, l'astrologie se distingue de l'approche scientifique : ses prédictions n'ont pas été validées par des études rigoureuses, et ses fondements théoriques sont incompatibles avec les principes de la méthode expérimentale. Malgré cela, elle conserve une forte présence culturelle et symbolique, prenant des formes variées selon les régions du monde.</p>
+                    
+                    <p>Historiquement, les origines de l'astrologie remontent à plus de 4 000 ans, à une époque où l'on cherchait à interpréter les saisons et les cycles célestes comme des signes émanant de forces divines. Elle servait alors à anticiper des phénomènes naturels ou sociaux importants.</p>
+                    
+                    <p>Plusieurs civilisations, telles que les Mayas, les Chinois et les hindous, ont développé des systèmes astrologiques complexes basés sur leurs observations des cieux, dans le but de comprendre et parfois de prédire les événements terrestres.</p>
+                    
+                    <p>L'astrologie occidentale, qui figure parmi les systèmes les plus anciens encore utilisés aujourd'hui, trouve ses racines en Mésopotamie entre le XIXe et le XVIIe siècle avant notre ère. Elle s'est ensuite diffusée dans le monde grec antique, romain, arabe, puis européen.</p>
+                    
+                    <p>Aujourd'hui, l'astrologie occidentale est souvent associée aux horoscopes. Ces derniers prétendent fournir des informations sur la personnalité et le destin d'un individu en se basant sur la position des corps célestes au moment de sa naissance.</p>
+                </div>
+            </section>
+
+            <section class="astrology-deep-dive" itemscope itemtype="https://schema.org/Article">
+                <h2 itemprop="headline">L'Astrologie : Une Exploration Approfondie</h2>
+                
+                <article class="astrology-section" itemprop="articleBody">
+                    <h3>Origines et Développement Historique</h3>
+                    <p>L'astrologie plonge ses racines dans les civilisations les plus anciennes. Dès le IIIe millénaire avant notre ère, les Mésopotamiens établissaient des corrélations entre les mouvements célestes et les événements terrestres. Les tablettes d'argile de la bibliothèque d'Assurbanipal (VIIe siècle av. J.-C.) révèlent déjà des comptes-rendus détaillés d'observations astrologiques. Ce savoir fut ensuite systématisé par les Grecs, notamment avec le <em>Tétrabible</em> de Ptolémée (IIe siècle), qui posa les bases de l'astrologie occidentale moderne.</p>
+                    <p>Pendant la Renaissance, des figures comme Johannes Kepler pratiquaient encore une astrologie mathématique rigoureuse. Ce n'est qu'avec la révolution scientifique du XVIIe siècle que l'astronomie et l'astrologie commencèrent leur divergence définitive. Paradoxalement, le XXe siècle vit un renouveau astrologique avec des approches psychologiques, notamment sous l'influence de Carl Jung et de son concept de "synchronicité".</p>
+                </article>
+
+                <article class="astrology-section">
+                    <h3>Fondements Symboliques</h3>
+                    <p>L'astrologie repose sur trois piliers symboliques majeurs :</p>
+                    
+                    <div class="symbolic-pillars">
+                        <div class="pillar">
+                            <h4>Le Zodiaque Tropical</h4>
+                            <p>Basé sur les saisons plutôt que sur les constellations réelles, il divise l'écliptique en 12 signes de 30° chacun. Ce système, fixé il y a 2000 ans, ne correspond plus aux constellations actuelles en raison de la précession des équinoxes (décalage d'environ 24° aujourd'hui).</p>
+                        </div>
+                        
+                        <div class="pillar">
+                            <h4>Les Aspects Planétaires</h4>
+                            <p>Les angles entre planètes (conjonction 0°, sextile 60°, carré 90°, etc.) créent une grammaire symbolique complexe. Un carré Mars-Saturne, par exemple, est traditionnellement interprété comme un conflit entre action (Mars) et restriction (Saturne).</p>
+                        </div>
+                        
+                        <div class="pillar">
+                            <h4>Les Maisons Astrologiques</h4>
+                            <p>Le système des 12 maisons, calculé selon le lieu et l'heure de naissance, représente des domaines de vie spécifiques. La Xe maison (Milieu du Ciel) concerne la vocation professionnelle, tandis que la VIIe maison régit les relations.</p>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="astrology-section">
+                    <h3>Approche Contemporaine</h3>
+                    <p>L'astrologie moderne a développé plusieurs courants :</p>
+                    
+                    <div class="modern-approaches">
+                        <div class="approach">
+                            <h4>L'astrologie psychologique (Dane Rudhyar)</h4>
+                            <p>Interprète le thème natal comme une carte du potentiel psychologique.</p>
+                        </div>
+                        
+                        <div class="approach">
+                            <h4>L'astrologie karmique</h4>
+                            <p>Met l'accent sur les cycles de réincarnation.</p>
+                        </div>
+                        
+                        <div class="approach">
+                            <h4>L'astrologie humaniste</h4>
+                            <p>Se concentre sur le développement personnel.</p>
+                        </div>
+                        
+                        <div class="approach">
+                            <h4>L'astrologie mondiale</h4>
+                            <p>Analyse les cycles planétaires pour comprendre les tendances historiques.</p>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="astrology-section">
+                    <h3>Perspectives Scientifiques</h3>
+                    <p>Bien que l'astrologie ne satisfasse pas aux critères de la méthode scientifique, certaines études méritent mention :</p>
+                    
+                    <ul class="scientific-list">
+                        <li><strong>Effet Mars (Gauquelin)</strong> : Une corrélation statistique controversée entre la position de Mars et la réussite sportive.</li>
+                        <li><strong>Biais psychologiques</strong> : L'effet Barnum (acceptation de descriptions vagues comme personnelles) explique en partie la popularité des horoscopes.</li>
+                    </ul>
+                </article>
+
+                <article class="astrology-section">
+                    <h3>Pratique Actuelle</h3>
+                    <p>Aujourd'hui, l'astrologie connaît un regain d'intérêt, notamment grâce aux réseaux sociaux. Des applications comme Co-Star ou The Pattern ont démocratisé l'accès aux interprétations astrologiques, mélangeant tradition et algorithmes. Les consultations professionnelles peuvent inclure :</p>
+                    
+                    <div class="practice-grid">
+                        <div class="practice-card">
+                            <h4>Thème natal complet</h4>
+                            <p>Analyse des 10 planètes, 12 maisons et aspects</p>
+                        </div>
+                        
+                        <div class="practice-card">
+                            <h4>Transits</h4>
+                            <p>Influence des planètes actuelles</p>
+                        </div>
+                        
+                        <div class="practice-card">
+                            <h4>Révolution solaire</h4>
+                            <p>Prévisions annuelles</p>
+                        </div>
+                        
+                        <div class="practice-card">
+                            <h4>Synastrie</h4>
+                            <p>Compatibilité entre deux thèmes</p>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="astrology-section">
+                    <h3>Glossaire Technique</h3>
+                    <div class="glossary-grid">
+                        <div class="term">
+                            <h4>Ascendant</h4>
+                            <p>Signe zodiacal à l'horizon Est au moment de la naissance</p>
+                        </div>
+                        
+                        <div class="term">
+                            <h4>Rétrogradation</h4>
+                            <p>Mouvement apparent inverse d'une planète</p>
+                        </div>
+                        
+                        <div class="term">
+                            <h4>Lune Noire (Lilith)</h4>
+                            <p>Point calculé lié à l'ombre psychologique</p>
+                        </div>
+                        
+                        <div class="term">
+                            <h4>Part de Fortune</h4>
+                            <p>Point synthétisant bonheur matériel</p>
+                        </div>
+                    </div>
+                </article>
+            </section>
+        </main>
+
+        <footer class="app-footer" role="contentinfo" itemscope itemtype="https://schema.org/WPFooter">
+            <div class="footer-buttons">
+                <button class="modal-btn" data-modal="modal-legal">Mentions Légales</button>
+                <button class="modal-btn" data-modal="modal-conditions">Conditions d'utilisation</button>
+                <button class="modal-btn" data-modal="modal-about">À propos</button>
+                <button class="modal-btn" data-modal="modal-rgpd">RGPD</button>
+                <button class="modal-btn" data-modal="modal-partners">Nos partenaires</button>
+            </div>
+            <div class="footer-right">
+                &copy; <span itemprop="copyrightYear">2025</span> <span itemprop="copyrightHolder">Site Horoscope - Mohamed Moussaoui</span>
+            </div>
+
+            <!-- Modals -->
+            <div id="modal-legal" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h3>Mentions Légales</h3>
+                    <p>
+                        <strong>Nom du Site:</strong> Horoscope Mohamed Moussaoui<br />
+                        <strong>Publié par:</strong> Mohamed Moussaoui<br />
+                        <strong>Mail:</strong> mohamedmoussaoui777@yahoo.com<br />
+                        <strong>Crédits:</strong> Site pédagogique réalisé a titre informatif et dans le cadre de mon apprentissage<br />
+                        <strong>Propriété intellectuelle:</strong> Tous droits réservés
+                    </p>
+                </div>
+            </div>
+
+            <div id="modal-conditions" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h3>Conditions d'utilisation</h3>
+                    <p>
+                        Ce site est un service horoscope à but informatif et spirituel.<br />
+                        Aucune donnée personnelle n'est collectée sans consentement.<br />
+                        Les messages sont fournis à titre divertissant et ne constituent pas une consultation astrologique professionnelle.
+                    </p>
+                </div>
+            </div>
+
+            <div id="modal-about" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h3>À propos</h3>
+                    <p>
+                        Site Horoscope est un projet développé avec passion pour apporter des messages inspirants.<br /><br />
+                        Notre mission : vous connecter à la sagesse des astres à travers des interprétations modernes.
+                    </p>
+                </div>
+            </div>
+
+            <div id="modal-rgpd" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h3>RGPD</h3>
+                    <p>
+                        Ce site respecte votre vie privée conformément au RGPD.<br />
+                        Aucun cookie traceur n'est utilisé.<br />
+                        Les données de navigation sont anonymisées.<br />
+                        Vous disposez des droits d'accès, de rectification et d'opposition.
+                    </p>
+                </div>
+            </div>
+
+            <div id="modal-partners" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h3>Nos partenaires</h3>
+                    <p>
+                        <a href="https://valentinguerault.fr/" target="_blank" rel="noopener noreferrer">valentinguerault.fr</a> - Valentin Guerault <br />
+                    </p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="assets/js/main.js"></script>
+    
+    <!-- Structured data for breadcrumbs -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Accueil",
+        "item": "https://ecf1-moussaoui-mohamed.sidathsoeun.fr"
+      },{
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Horoscope",
+        "item": "https://ecf1-moussaoui-mohamed.sidathsoeun.fr/horoscope"
+      }]
+    }
+    </script>
+</body>
+</html>

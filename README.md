@@ -5,18 +5,18 @@ En tant qu'entreprise informatique notre mission consiste à concevoir et dével
 complète qui se connecte à une API externe et propose une expérience utilisateur fluide, moderne et responsive.
 
 ## 📂 Arborecense
-
-/ (Racine du projet)
+/
 ├── assets/
-│ ├── css/
-│ │ └── style.css
-│ ├── js/
-│ │ └── main.js
-│ └── images/
-│ └── favicon.ico (facultatif)
+│   ├── css/
+│   │   └── style.css
+│   ├── js/
+│   │   └── main.js
+│   └── images/
+│       └── favicon.ico (facultatif)
 ├── index.html
 ├── README.md
 └── .gitignore
+
 
 
 ## 📌 Objectif

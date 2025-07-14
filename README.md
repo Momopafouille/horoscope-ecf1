@@ -4,6 +4,7 @@
 En tant qu'entreprise informatique notre mission consiste à concevoir et développer une application web
 complète qui se connecte à une API externe et propose une expérience utilisateur fluide, moderne et responsive.
 
+<pre> ```txt
 ## 📂 Arborecense
 /
 ├── assets/
@@ -16,7 +17,7 @@ complète qui se connecte à une API externe et propose une expérience utilisat
 ├── index.html
 ├── README.md
 └── .gitignore
-
+``` </pre>
 
 
 ## 📌 Objectif

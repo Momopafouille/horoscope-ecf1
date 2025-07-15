@@ -28,6 +28,15 @@ Application web moderne permettant de consulter des messages horoscopiques pour 
  - **CSS3**
  - **JAVASCRIPT**
 
+## 🛠️ Kanban Product Backlog
+Tâche	                                      Points                                     	Priorité
+
+Affichage Messages API	                        11	                                          Haute
+
+Developpement CSS	                            9	                                          Moyenne
+
+Amelioration du SEO	                            5	                                          Basse
+
 ## ✨ Fonctionnalités
 - Génération des 12 messages horoscopiques par API
 - Design responsive (mobile/tablette/desktop)
